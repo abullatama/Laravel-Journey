@@ -42,7 +42,8 @@ a{
 
 section{
     background-color: white;
-    margin: 70px 200px 70px 200px;
+    /* margin: 70px 200px 70px 200px; */
+    margin: 7% 15%;
     padding: 20px;
     justify-content: center;
     font-weight: 500;
