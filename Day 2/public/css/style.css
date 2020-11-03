@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 
 body{
-    background-image: url("public/img/pattern.jpg");
+    background-image: url("../img/pattern.jpg");
     font-family: 'Slabo 27px', serif;
     margin: 0;
 }
@@ -37,13 +37,16 @@ header
 a{
     text-decoration: none;
     font-weight: bold;
+    color: black;
 }
 
 section{
     background-color: white;
-    margin: 70px 120px 70px 120px;
+    margin: 70px 200px 70px 200px;
     padding: 20px;
     justify-content: center;
+    font-weight: 500;
+    font-size: 1em;
 }
 
 .tittle{
