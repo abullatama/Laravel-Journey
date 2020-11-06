@@ -51,30 +51,74 @@
             ['003', 'Mouse Genius', 50000, 'Mouse Genius biar lebih pinter', 'genius.jpeg'],
             ['004', 'Mouse Jerry', 30000, 'Mouse yang disukai kucing', 'jerry.jpg']
         ]
+        var arrLength = items.length
 
+        //Relase 0
         function loadBarang() {
             var listBarang = document.getElementById("listBarang")
-            var arrLength = items.length
             var i = 0
             while (i <= arrLength - 1) {
                 listBarang.innerHTML += `
-                <div class="col col-md-4">
-                    <div class="card">
-                        <img src="img/`+ items[i][4] + `" class="card-img-top" alt="gambar">
-                        <div class="card-body">
-                            <h5 class="card-title" id="itemName">`+ items[i][1] + `</h5>
-                            <p class="card-text" id="itemDesc">`+ items[i][3] + `</p>
-                            <p class="card-text">Rp.`+ items[i][2] + `</p>
-                            <a href="#" class="btn btn-primary" id="addCart">
-                                <i class="fas fa-shopping-cart"></i> Add To Cart 
-                            </a>
+                    <div class="col col-md-4">
+                        <div class="card">
+                            <img src="img/${items[i][4]} " class="card-img-top" alt="gambar">
+                            <div class="card-body">
+                                <h5 class="card-title" id="itemName">${items[i][1]}</h5>
+                                <p class="card-text" id="itemDesc">${items[i][3]}</p>
+                                <p class="card-text">Rp.${items[i][2]}</p>
+                                <a href="#" class="btn btn-primary" id="addCart">
+                                    <i class="fas fa-shopping-cart"></i> Add To Cart 
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 `
                 i++
             }
         }
+
+        //Release 1
+        var form = document.getElementById("formItem")
+        form.addEventListener("submit", function (event) {
+            event.preventDefault()
+            var listBarang = document.getElementById("listBarang")
+            listBarang.innerHTML = ""
+            var keyword = document.getElementById("keyword").value
+            var i = 0
+            while (i <= arrLength - 1) {
+                var item = items[i][1].split(" ")
+                for (var j = 0; j <= item.length - 1; j++) {
+                    if (item[j].toLowerCase() == keyword.toLowerCase()) {
+                        listBarang.innerHTML += `
+                            <div class="col col-md-4">
+                                <div class="card">
+                                    <img src="img/${items[i][4]} " class="card-img-top" alt="gambar">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="itemName">${items[i][1]}</h5>
+                                        <p class="card-text" id="itemDesc">${items[i][3]}</p>
+                                        <p class="card-text">Rp.${items[i][2]}</p>
+                                        <a href="#" class="btn btn-primary" id="addCart">
+                                            <i class="fas fa-shopping-cart"></i> Add To Cart 
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    }
+
+                }
+                i++
+            }
+            if (listBarang.innerHTML == "") {
+                listBarang.innerHTML = `
+                <div class="col">
+                    <h3 style="text-align:center">
+                       Keyword Tidak Ditemukan 
+                    </h3>
+                </div>
+                `
+            }
+        })
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
